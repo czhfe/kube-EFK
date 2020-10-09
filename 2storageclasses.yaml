@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: logging
+  name: elasticsearch-0
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "es-data"
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 150Gi
+  nfs:
+    path: /share-0bbbaaf5/elasticsearch-0
+    server: sfs-nas1.cn-south-1c.myhuaweicloud.com
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: logging
+  name: elasticsearch-1
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "es-data"
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 150Gi
+  nfs:
+    path: /share-0bbbaaf5/elasticsearch-1
+    server: sfs-nas1.cn-south-1c.myhuaweicloud.com
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: logging
+  name: elasticsearch-2
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "es-data"
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 150Gi
+  nfs:
+    path: /share-0bbbaaf5/elasticsearch-2
+    server: sfs-nas1.cn-south-1c.myhuaweicloud.com
