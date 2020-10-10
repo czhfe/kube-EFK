@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: logging
+  name: es-ingress
+spec:
+  rules:
+    - host: es.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: elasticsearch
+              servicePort: 9200
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: logging
+  name: kibana-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: kibana-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Log System'
+spec:
+  rules:
+    - host: kibana.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: kibana
+              servicePort: 5601
